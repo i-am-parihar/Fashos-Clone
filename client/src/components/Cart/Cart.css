@@ -1,0 +1,25 @@
+.cartContainer{
+    border: 1px solid red;
+    width: 100%;
+    margin-top: 65px;
+    height: 1000px;
+}
+.deletBtn:hover{
+  cursor: pointer;
+}
+.tableContainer{
+    border: 1px solid rgb(175, 169, 169);
+}
+.btn{
+    background-color: black;
+    color: white ;
+}
+.btn:hover{
+    background-color: white;
+    color: black ;
+    cursor: pointer;
+}
+.CartSmallBox{
+    display: flex;
+    justify-content: space-around;
+}

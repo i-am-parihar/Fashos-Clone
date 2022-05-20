@@ -1,0 +1,19 @@
+.container{
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    margin-top: 50px;
+}
+.fontStyle{
+    color: white;
+    font-weight: 100;
+    font-size: medium;
+}
+.firstDiv{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.fontStyle:hover{
+    cursor: pointer;
+}
