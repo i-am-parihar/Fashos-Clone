@@ -1,0 +1,69 @@
+.checkoutContainer{
+    /* border:  1px solid red; */
+    width: 100%;
+    margin-top: 70px;
+    margin-left: 10px;
+    height: 600px;
+    display: flex;
+  }
+  .FirstContainer{
+    border: 1px solid #dad6d6 ;
+    width: 60%;
+    height: 100%;
+    background-color: #f5f0f0;
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+  }
+  .FirstContainerBox{
+    border: 1px solid white;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 5px;
+  }
+  .FirstContainerPart1{
+    overflow: scroll;
+    height: 60%;
+  }
+  .smallConatinerDiv{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .SecPart1{
+    border: 1px solid #dad6d6;
+    border-radius: 10px;
+    width: 95%;
+    height: 65%;
+    margin-left: 10%;
+    margin-top: 20px;
+    justify-content: center;
+    padding: 9px 40px;
+  }
+  .SecPart2{
+      border: 1px solid #dad6d6;
+      border-radius: 10px;
+      width: 95%;
+      margin-left: 10%;
+      margin-top: 20px;
+      justify-content: center;
+      padding: 9px 40px;
+  }
+  .demoInput{
+    border: 1px solid #dad6d6;
+    padding: 10px 10px;
+    border-radius: 5px;
+  }
+  .Demobtn{
+    background-color: #1a73e8;
+    padding: 13px 40px;
+    border: transparent;
+    color: white;
+    margin-left: 120px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    padding: 14 45;
+    border-radius: 4px;
+  }
