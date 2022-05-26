@@ -88,7 +88,7 @@ export const sortData = (ord) => (disptach) => {
 
 export const fetchSearchData = (string) => (disptach) => {
     disptach(data_loading()) ;
-    axios.get(`http://localhost:8080/data?q=${string}`)
+    axios.get(`http://localhost:9000/data/${string}`)
     .then((res) => disptach(search_data(res.data)))
     .catch(()=> disptach(data_failure())) ;
 } 

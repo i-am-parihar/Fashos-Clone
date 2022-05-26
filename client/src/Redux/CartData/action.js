@@ -34,6 +34,6 @@ export const deleteCartItem = (id) => (disptach) => {
 // ***************************
 export const patchCartItem = (newQty,id) => (disptach) => {
     disptach(cartdata_loading()) ;
-    axios.patch(`http://localhost:8080/cartData/${id}`,{"quantiy":newQty})
+    axios.patch(`http://localhost:9000/cartData/${id}?quantiy=${newQty}`)
     .catch(()=> cartdata_failure()) ;
 }

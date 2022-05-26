@@ -25,9 +25,7 @@ router.post("" , async(req,res) => {
 
 router.patch("/:id" , async(req,res) => {
     try{
-        const cartData = await Cart.findByIdAndUpdate(req.params.id , req.body,{
-            new: true ,
-        })
+        const cartData = await Cart.findByIdAndUpdate(req.params.id, {quantiy:req.query.quantiy},{new:true})
         return res.send(cartData) ;
     }
     catch(er){

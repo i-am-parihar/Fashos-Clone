@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchdata, filterdata, getElement, sortData } from '../../Redux/Data/action';
 import './Products.css' ;
@@ -9,11 +9,15 @@ import { useNavigate } from 'react-router-dom';
 export const Products = () => {
     const dispatch = useDispatch() ;
     const {data , loading } = useSelector((state)=>state.mainData) ;
+    const [mainData , setmainData] = useState([]) ;
+    const [order , setOrder]  = useState(true) ;
     const navigate = useNavigate() ;
-    //   console.log(data) ;
     useEffect(()=>{
         dispatch(fetchdata()) ;
     },[])
+    useEffect(() =>{
+       setmainData(data) ;
+    },[data])
 
     if(loading){
         return( 
@@ -32,9 +36,26 @@ export const Products = () => {
             )
     }
 
-    const handleBrand = (e) => {
-      dispatch(filterdata(e)) ;
+    const handleSize = (input) => {
+      let filterData  = data.filter((el) => {
+          return el.size == input ;
+      })
+      setmainData(filterData) ;
     }
+ 
+    const handleBrand = (input) => {
+        let filterData  = data.filter((el) => {
+            return el.brand == input ;
+        })
+        setmainData(filterData) ;
+      }
+
+    const hadleColor = (input) => {
+        let filterData  = data.filter((el) => {
+            return el.color == input ;
+        })
+        setmainData(filterData) ;
+      }
 
     const handleGetElement = (id) => {
         dispatch(getElement(id)) ;
@@ -45,13 +66,23 @@ export const Products = () => {
     }
 
     const handleSort = (ord) => {
-        dispatch(filterdata(ord)) ;
-    }
+        if(ord=="desc"){
+            let sortData  =  data.sort((a,b) => (b.price - a.price)) ;
+            setmainData(sortData) ;
+            setOrder(!order) ;
+        }
+        else if(ord=="asc"){
+            let sortData  =  data.sort((a,b) => (a.price - b.price)) ;
+            setmainData(sortData) ;
+            setOrder(!order) ;
+        }
+    };
 
+    console.log(mainData) ;
     return(
         <div className='containerDiv'>
             <div className="firstDiv">
-              <p>{data.length}-Products</p>
+              <p>{mainData.length}-Products</p>
               <div style={{display:"flex"}}>
                 <p>Sort BY:</p>
                 <select 
@@ -82,7 +113,7 @@ export const Products = () => {
 
                     <p style={{marginLeft:"24%"}}>COLOR<span>
                     <select 
-                    onChange={(e)=> handleBrand(e.target.value)}
+                    onChange={(e)=> hadleColor(e.target.value)}
                     style={{marginLeft:"5px"}}
                     >
                         <option value="All">All</option>
@@ -94,17 +125,17 @@ export const Products = () => {
                     
                     <p style={{marginLeft:"4%"}}>Size :</p>
                     <div className='FilterBtn'>
-                    <button className='btn'onClick={() => handleBrand(40)} style={{borderRadius:"5px"}}>40</button>
-                    <button className='btn'onClick={() => handleBrand(41)} style={{borderRadius:"5px"}}>41</button>
-                    <button className='btn'onClick={() => handleBrand(42)} style={{borderRadius:"5px"}}>42</button>
-                    <button className='btn'onClick={() => handleBrand(43)} style={{borderRadius:"5px"}}>43</button>
-                    <button className='btn'onClick={() => handleBrand(44)} style={{borderRadius:"5px"}}>44</button>
-                    <button className='btn'onClick={() => handleBrand(45)} style={{borderRadius:"5px"}}>45</button>
+                    <button className='btn'onClick={() => handleSize("40")} style={{borderRadius:"5px"}}>40</button>
+                    <button className='btn'onClick={() => handleSize("41")} style={{borderRadius:"5px"}}>41</button>
+                    <button className='btn'onClick={() => handleSize("42")} style={{borderRadius:"5px"}}>42</button>
+                    <button className='btn'onClick={() => handleSize("43")} style={{borderRadius:"5px"}}>43</button>
+                    <button className='btn'onClick={() => handleSize("44")} style={{borderRadius:"5px"}}>44</button>
+                    <button className='btn'onClick={() => handleSize("45")} style={{borderRadius:"5px"}}>45</button>
                     </div>
                 </div>
 
                 <div className='secDiv_part2'>
-                    {data.map((el,id)=>{
+                    {mainData.map((el,id)=>{
                         return(
                             <div className='elements' key={id} onClick={()=> handleGetElement(el._id)}>
                                 <img src={el.img1} onClick={()=>handleNavigate(el._id)} style={{width:"100%" , height:"260px"}}/>

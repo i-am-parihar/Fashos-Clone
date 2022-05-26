@@ -33,6 +33,16 @@ router.get("/filter" , async(req,res) => {
     }
 })
 
+router.get("/:brand" , async(req,res) => {
+    try{
+        const productData = await Data.find({'brand':req.params.brand}).lean().exec() ;
+        return res.send(productData) ;
+    }
+    catch(er){
+        return res.status(500).send(er.message) ;
+    }
+})
+
 router.get("" , async(req,res)=>{
     try{
         const productData = await Data.find().lean().exec() ;
@@ -62,6 +72,8 @@ router.get("/:id" , async(req,res) => {
         return res.status(500).send(er.message) ;
     }
 })
+
+
 
 // ****************
 

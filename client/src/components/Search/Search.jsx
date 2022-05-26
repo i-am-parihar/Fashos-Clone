@@ -13,6 +13,7 @@ const navigate = useNavigate() ;
 
 const handleChange = (e) => {
     e.preventDefault();
+    console.log(inputData) ;
     dispatch(fetchSearchData(inputData)) ;
 }
 
@@ -31,14 +32,20 @@ if(loading){
         </div>
     )
 }
-console.log(searchData.length) ;
+
+// console.log(searchData.length) ;
 if(searchData.length===0){
-    console.log("here")
+    // console.log("here")
     return(
         <div className="SearchContainer">
         <div className="SearchBox">
         <IoIosSearch className="SearchBar" onClick={(e) => handleChange(e)}/>
-        <input className="SearchInputBox" placeholder="Search Here !" type="text" onChange={(e) => setInputdata(e.target.value)}/>
+        <input 
+        className="SearchInputBox" 
+        placeholder="Search Here !"
+        type="text" 
+        value={inputData}
+        onChange={(e) => setInputdata(e.target.value)}/>
         </div>
     </div>
     )
